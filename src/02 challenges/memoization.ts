@@ -4,17 +4,13 @@ const expensiveFunction = () => {
     return 3.1415;
 }
 
-type TFunction<T> = () => T;
 interface IFunction<T> {
     (): T;
-    value: T;
+    value?: T;
 }
 
 // PART B
-const memoizeInline = <T>(fn: TFunction<T>): IFunction<T>  => {
-    const fun: IFunction<T> = () => fun.value ?? fn();
-    return (fun.value = undefined, fun);
-};
+const memoizeInline = <T>(fn: IFunction<T>): IFunction<T>  => () => fn.value ?? (fn.value = fn());
 
 const memoized = memoizeInline(expensiveFunction);
 console.log(memoized()); // Una única llamada // 3.1415
@@ -25,18 +21,20 @@ console.log(memoized()); // 3.1415
 type TFunctionWithParameters<T, P extends string | number | boolean> = (...args: P[]) => T;
 interface IFunctionWithParameters<T, P extends string | number | boolean> {
     (...args: P[]): T;
-    values: T[];
-    parameters: P[][];
+    values?: T[];
+    parameters?: P[][];
 }
 
 let count = 0; // Comprobacion de nº de ejecuciones
 const repeatText = (repetitions: number, text: string): string =>
     (count++, `${text} `.repeat(repetitions).trim())
 
-const memoize = <T, P extends string | number | boolean>(fn: TFunctionWithParameters<T, P>): IFunctionWithParameters<T, P>  => {
-    const fun: IFunctionWithParameters<T, P> = (...args: P[]): T => {
-        for (let i = 0; i < fun.parameters.length; i++) {
-            const parameterList = fun.parameters[i];
+const memoize = <T, P extends string | number | boolean>(fn: IFunctionWithParameters<T, P>): TFunctionWithParameters<T, P>  => {
+    fn.values = [];
+    fn.parameters = [];
+    return (...args: P[]): T => {
+        for (let i = 0; i < fn.parameters.length; i++) {
+            const parameterList = fn.parameters[i];
             if (args.length !== parameterList.length) {
                 continue;
             }
@@ -50,16 +48,15 @@ const memoize = <T, P extends string | number | boolean>(fn: TFunctionWithParame
             }
 
             if (equals) {
-                return fun.values[i];
+                return fn.values[i];
             }
         }
 
-        fun.parameters.push(args);
+        fn.parameters.push(args);
         const value = fn(...args);
-        fun.values.push(value);
+        fn.values.push(value);
         return value;
     };
-    return (fun.values = [], fun.parameters = [], fun);
 };
 
 const memoizedGreet = memoize(repeatText);
