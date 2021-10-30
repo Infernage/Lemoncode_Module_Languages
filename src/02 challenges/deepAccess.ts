@@ -1,3 +1,4 @@
+console.log("************** CHALLENGE DEEP ACCESS *********************");
 // PART A
 const myObjectA = {
     a: 1,

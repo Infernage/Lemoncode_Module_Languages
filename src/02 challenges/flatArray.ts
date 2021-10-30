@@ -1,3 +1,4 @@
+console.log("************** CHALLENGE FLAT ARRAY *********************");
 type TMultiArray<T> = Array<T> | Array<TMultiArray<T>>
 
 const flatArray = <T>(multiDimensionalArray: TMultiArray<T>): T[] => {

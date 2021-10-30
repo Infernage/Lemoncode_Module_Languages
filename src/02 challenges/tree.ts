@@ -1,3 +1,4 @@
+console.log("************** CHALLENGE TREE *********************");
 type TNode<T> = {
     value: T;
     children?: TNode<T>[];
@@ -32,3 +33,4 @@ const tree: Tree<number> = {
         }
     ]
 }
+console.log(tree);

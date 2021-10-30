@@ -1,5 +1,5 @@
 console.log("************** DELIVERABLE 02 *********************");
-const concat = (...arrays) => {
+export const concat = (...arrays) => {
     let result = [];
 
     for (const array of arrays) {

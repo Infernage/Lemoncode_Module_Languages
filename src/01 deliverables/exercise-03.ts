@@ -3,7 +3,7 @@ function isObject(obj) {
     return obj?.constructor === Object && obj instanceof Object;
 }
 
-function clone(source) {
+export function clone(source) {
     if (!isObject(source)) {
         return {};
     }
@@ -11,7 +11,7 @@ function clone(source) {
     return merge(source, {});
 }
 
-function merge(source, target) {
+export function merge(source, target) {
     if (!isObject(source) && !isObject(target)) {
         return {};
     }

@@ -1,3 +1,4 @@
+console.log("************** EXTRA CALIFICATIONS SUMMARY *********************");
 type TStudent = {
     name: string;
     califications: number[];
@@ -7,7 +8,7 @@ type TStudentSummary = Pick<TStudent, 'name'> & {
     averageCalifications: string;
 }
 
-const summarizeClassRoom = (studentList: TStudent[]) => {
+export const summarizeClassRoom = (studentList: TStudent[]) => {
     return studentList.map<TStudentSummary>(student => {
         let highestCalification = 0;
         let averageCalification = 0;

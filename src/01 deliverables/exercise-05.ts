@@ -1,5 +1,5 @@
 console.log("************** DELIVERABLE 05 *********************");
-class SlotMachine {
+export class SlotMachine {
     private coins: number;
 
     constructor() {

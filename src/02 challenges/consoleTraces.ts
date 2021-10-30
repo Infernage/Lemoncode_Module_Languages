@@ -1,3 +1,4 @@
+console.log("************** CHALLENGE CONSOLE TRACES *********************");
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const showMessage = async ([time, message]) => {

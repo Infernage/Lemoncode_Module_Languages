@@ -1,7 +1,8 @@
+console.log("************** EXTRA MORSE *********************");
 interface ISender {
     send(message: string): void;
 }
-type TTimeoutFunction = (handler: Function, pointNumbers: number, ...arguments: unknown[]) => void;
+type TTimeoutFunction = (handler: Function, pointNumbers: number, ...args: unknown[]) => void;
 type TWriterFunction = (state: boolean) => void;
 
 class Sender implements ISender {
@@ -114,8 +115,8 @@ const factory = (translatorObject: unknown, timingFunction: TTimeoutFunction, wr
 }
 
 const writer: TWriterFunction = state => state ? console.log('ON') : console.log('OFF');
-const timing: TTimeoutFunction = (handler, pointNumbers, ...arguments: unknown[]) => {
-    setTimeout(handler, 50 * pointNumbers, ...arguments);
+const timing: TTimeoutFunction = (handler, pointNumbers, ...args: unknown[]) => {
+    setTimeout(handler, 50 * pointNumbers, ...args);
 }
 
-const transmisor = factory(morseAlphabet, timing, writer, () => console.log('FINISHED'));
+export const transmisor = factory(morseAlphabet, timing, writer, () => console.log('FINISHED'));

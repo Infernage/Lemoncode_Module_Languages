@@ -1,5 +1,5 @@
 console.log("************** DELIVERABLE 01 *********************");
-const head = (array = []) => {
+export const head = (array = []) => {
     if (!array?.length) {
         return null;
     }
@@ -8,7 +8,7 @@ const head = (array = []) => {
     return first;
 }
 
-const tail = (array = []) => {
+export const tail = (array = []) => {
     if (!array?.length) {
         return null;
     }
@@ -17,7 +17,7 @@ const tail = (array = []) => {
     return rest;
 }
 
-const init = (array = []) => {
+export const init = (array = []) => {
     if (!array?.length) {
         return null;
     }
@@ -25,7 +25,7 @@ const init = (array = []) => {
     return array?.slice(0, array.length - 1);
 }
 
-const last = (array = []) => {
+export const last = (array = []) => {
     if (!array?.length) {
         return null;
     }

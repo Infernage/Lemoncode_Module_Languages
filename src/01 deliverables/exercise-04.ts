@@ -4,6 +4,6 @@ type TBook = {
     isRead: boolean;
 }
 
-function isBookRead(books: TBook[], titleToSearch: string) {
+export function isBookRead(books: TBook[], titleToSearch: string) {
     return books.some((book) => book.title === titleToSearch && book.isRead);
 }
