@@ -1,3 +1,4 @@
+console.log("************** DELIVERABLE 01 *********************");
 const head = (array = []) => {
     if (!array?.length) {
         return null;
@@ -17,17 +18,17 @@ const tail = (array = []) => {
 }
 
 const init = (array = []) => {
-  if (!array?.length) {
-      return null;
-  }
+    if (!array?.length) {
+        return null;
+    }
 
-  return array?.slice(0, array.length - 1);
+    return array?.slice(0, array.length - 1);
 }
 
 const last = (array = []) => {
-  if (!array?.length) {
-      return null;
-  }
+    if (!array?.length) {
+        return null;
+    }
 
-  return array?.[array.length - 1];
+    return array?.[array.length - 1];
 }

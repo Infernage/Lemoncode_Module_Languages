@@ -1,5 +1,6 @@
+console.log("************** DELIVERABLE 02 *********************");
 const concat = (...arrays) => {
-  let result = [];
+    let result = [];
 
     for (const array of arrays) {
         if (!array?.length) {
@@ -9,5 +10,5 @@ const concat = (...arrays) => {
         result = [...result, ...array];
     }
 
-  return result;
+    return result;
 }
